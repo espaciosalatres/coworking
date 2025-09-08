@@ -29,7 +29,7 @@
         }
 
         h2 {
-            margin: 5px 0 0 0;
+            margin: 5px 0 10px 0;
             font-size: 10px;
             color: #2575f1;
         }
@@ -88,6 +88,37 @@
             margin: 10px 0;
         }
 
+        /* Scroll horizontal para la galería */
+        .horizontal-scroll {
+            display: flex;
+            overflow-x: auto;
+            gap: 10px;
+            padding: 10px 0;
+        }
+
+        .horizontal-scroll img {
+            max-height: 120px;
+            border: 2px solid #2575f1;
+            border-radius: 4px;
+        }
+
+        .horizontal-scroll::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .horizontal-scroll::-webkit-scrollbar-thumb {
+            background: #2575f1;
+            border-radius: 4px;
+        }
+
+        .gallery-title {
+            font-size: 8px;
+            color: #000000;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
     </style>
 </head>
 <body>
@@ -133,6 +164,14 @@
                 </iframe>
             </div>
 
+            <!-- Galería de fotos scroll horizontal -->
+            <div class="gallery-title" id="galleryTitle">Galería de fotos</div>
+            <div class="horizontal-scroll">
+                <img src="images/foto1.jpeg" alt="Foto 1">
+                <img src="images/foto2.jpeg" alt="Foto 2">
+                <img src="images/foto3.jpeg" alt="Foto 3">
+            </div>
+
         </div>
     </main>
 
@@ -146,7 +185,8 @@
                 p3: "We offer divided workspaces, desk and chair, personal locker, WIFI connection, and common areas.",
                 p4: "Opening hours: Monday to Friday from 09:00 to 22:00.<br>📍 Located near Ángel Guimerá metro station.<br>For more information, email us at <span class='highlight'>espaciosalatres@gmail.com</span> or chat with us on WhatsApp: <span class='highlight'>+34 699 111 222</span>.",
                 emailBtn: "Send Email",
-                whatsappBtn: "WhatsApp"
+                whatsappBtn: "WhatsApp",
+                galleryTitle: "Photo Gallery"
             },
             es: {
                 title: "Sala Tres",
@@ -156,7 +196,8 @@
                 p3: "Contamos con espacios divididos, mesa y silla de trabajo, locker personal, conexión WIFI y espacios en común.",
                 p4: "Nuestro horario de apertura: Lunes a Viernes de 09:00hs a 22:00hs.<br>📍 Estamos ubicados cerca de la estación de metro Ángel Guimerá.<br>Para más información escribinos a <span class='highlight'>espaciosalatres@gmail.com</span> o chateá con nosotros en WhatsApp: <span class='highlight'>+34 699 111 222</span>.",
                 emailBtn: "Enviar Email",
-                whatsappBtn: "WhatsApp"
+                whatsappBtn: "WhatsApp",
+                galleryTitle: "Galería de fotos"
             }
         };
 
@@ -169,8 +210,14 @@
             document.getElementById('p4').innerHTML = content[lang].p4;
             document.getElementById('emailBtn').innerHTML = content[lang].emailBtn;
             document.getElementById('whatsappBtn').innerHTML = content[lang].whatsappBtn;
+            document.getElementById('galleryTitle').innerHTML = content[lang].galleryTitle;
         }
     </script>
 
 </body>
 </html>
+
+
+</body>
+</html>
+
