@@ -29,7 +29,7 @@
         }
 
         h2 {
-            margin: 5px 0 10px 0;
+            margin: 15px 0 10px 0; /* más espacio del título */
             font-size: 10px;
             color: #2575f1;
         }
@@ -63,12 +63,15 @@
         .button-container {
             text-align: center;
             margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .pixel-button {
-            display: inline-block;
+            display: block;
             padding: 10px 20px;
-            margin: 5px;
+            margin: 5px 0;
             color: #000000;
             background-color: #e0f747;
             border: 2px solid #2575f1;
@@ -76,6 +79,7 @@
             font-size: 8px;
             box-shadow: 4px 4px 0 #000000;
             cursor: pointer;
+            width: fit-content;
         }
 
         .pixel-button:hover {
@@ -83,23 +87,33 @@
             color: #ffffff;
         }
 
-        .lang-switch {
-            text-align: center;
-            margin: 10px 0;
+        /* Container pixel art para galería */
+        .gallery-container {
+            background: #f1f1f1;
+            border: 4px solid #2575f1;
+            box-shadow: 0 0 0 4px #000000 inset;
+            padding: 10px;
+            margin: 20px 0;
         }
 
-        /* Scroll horizontal para la galería */
+        .gallery-title {
+            font-size: 8px;
+            color: #000000;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
         .horizontal-scroll {
             display: flex;
             overflow-x: auto;
             gap: 10px;
-            padding: 10px 0;
+            padding: 5px 0;
         }
 
         .horizontal-scroll img {
             max-height: 120px;
             border: 2px solid #2575f1;
-            border-radius: 4px;
+            box-shadow: 2px 2px 0 #000000;
         }
 
         .horizontal-scroll::-webkit-scrollbar {
@@ -110,63 +124,49 @@
             background: #2575f1;
             border-radius: 4px;
         }
-
-        .gallery-title {
-            font-size: 8px;
-            color: #000000;
-            margin-top: 20px;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-
     </style>
 </head>
 <body>
 
-    <!-- Botonera de idioma centrada arriba -->
-    <div class="lang-switch">
-        <button class="pixel-button" onclick="switchLang('es')">ESP</button>
-        <button class="pixel-button" onclick="switchLang('en')">ENG</button>
-    </div>
-
     <header>
-        <h1 id="title">Sala Tres</h1>
-        <h2 id="subtitle">espacio de coworking creativo</h2>
+        <h1>Sala Tres</h1>
+        <h2>espacio de coworking creativo ❤️</h2>
     </header>
 
     <main>
         <div class="pixel-box">
-            <p id="p1">Espacio colaborativo de creación en el corazón de <span class="highlight">La Petxina, Valencia</span>, destinado a artistas plásticos, audiovisuales, diseñadores, artesanos, ilustradores y demás personas vinculadas al ámbito cultural y artístico.</p>
+            <p>Hola! bienvenid@s a sala tres. Aquí encontrarán un espacio colaborativo de creación en el corazón de <span class="highlight">La Petxina, Valencia</span>, destinado a artistas plásticos, audiovisuales, diseñador@s, artesan@s, ilustrador@s, talleristas y demás personas vinculadas a ámbitos culturales, artísticos y tecnológicos.</p>
             
-            <p id="p2">Sala Tres nace como un lugar de exploración, intercambio, producción y desarrollo de proyectos de manera individual o en conexión con una comunidad activa.</p>
+            <p>Sala tres nace ante la necesidad de un punto de encuentro físico de exploración y creación en una zona de la ciudad que está en pleno proceso de transformación cultural. En el mismo barrio encontrarás al <a href="https://www.instagram.com/cc.juby/" target="_blank" class="highlight">Centro Cultural Juby</a>, un espacio que viene a darle una nueva impronta a esta zona de la ciudad ofreciendo distintas propuestas socio culturales.</p>
             
-            <p id="p3">Contamos con espacios divididos, mesa y silla de trabajo, locker personal, conexión WIFI y espacios en común.</p>
+            <p>En sala tres contarán con su propio espacio para proyectos personales asi también como espacios en común que permitirán generar un ámbito de conexiones con otras personas de diferentes ámbitos artísticos y culturales. Contamos con <span class="highlight">WIFI</span>, mesas, veladores, zona de vestuarios, refrigeradora, cafetera y utensillos de cocina.  </p>
 
             <!-- Galería de fotos scroll horizontal -->
-            <div class="gallery-title" id="galleryTitle">Galería de fotos</div>
-            <div class="horizontal-scroll">
-                <img src="images/foto1.jpeg" alt="Foto 1">
-                <img src="images/foto2.jpeg" alt="Foto 2">
-                <img src="images/foto3.jpeg" alt="Foto 3">
+            <div class="gallery-container">
+                <div class="horizontal-scroll">
+                    <img src="images/foto1.jpeg" alt="Foto 1">
+                    <img src="images/foto2.jpeg" alt="Foto 2">
+                    <img src="images/foto3.jpeg" alt="Foto 3">
+                </div>
             </div>
 
-            <p id="p4">Nuestro horario de apertura: Lunes a Viernes de 09:00hs a 22:00hs.<br>
-            📍 Estamos ubicados cerca de la estación de metro Ángel Guimerá.<br>
-            Para más información escribinos a <span class="highlight">espaciosalatres@gmail.com</span> o chateá con nosotros en WhatsApp: <span class="highlight">+34 699 111 222</span>.</p>
+            <p>Nuestro horario de apertura: Lunes a Viernes de <span class="highlight">09:00hs a 22:00hs</span>.<br>
+            Estamos ubicados cerca de la estación de metro Ángel Guimerá y la Gran Vía de Fernando el Católico .<br>
+            Para más información escribenos a <span class="highlight">espaciosalatres@gmail.com</span> o encuentranos en WhatsApp: <span class="highlight">+34 634 251 216</span>.</p>
 
             <div class="button-container">
-                <a href="mailto:espaciosalatres@gmail.com" class="pixel-button" id="emailBtn">Enviar Email</a>
-                <a href="https://wa.me/34699111222" class="pixel-button" id="whatsappBtn">WhatsApp</a>
+                <a href="https://wa.me/34634251216" class="pixel-button">Estamos en WhatsApp</a>
+                <a href="mailto:espaciosalatres@gmail.com" class="pixel-button">Email</a>
             </div>
 
-            <!-- Mapa dinámico centrado dentro del recuadro -->
+            <!-- Mapa dinámico -->
             <div style="text-align:center; margin-top:20px;">
                 <iframe 
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3110.542381414443!2d-0.3852367846532068!3d39.466179579472554!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd604f9e061cf8c1%3A0x29e6310f27682ab0!2sEstaci%C3%B3n%20de%20Metro%20%22%C3%81ngel%20Guimer%C3%A1%22!5e0!3m2!1ses!2ses!4v1694173200000!5m2!1ses!2ses" 
                     width="100%" 
                     height="300" 
                     style="border:0; border-radius:4px;" 
-                    allowfullscreen="" 
+                    allowfullscreen 
                     loading="lazy" 
                     referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
@@ -175,36 +175,5 @@
         </div>
     </main>
 
-    <script>
-        const content = {
-            en: {
-                title: "Sala Tres",
-                subtitle: "creative coworking space",
-                p1: "Collaborative creative space in the heart of <span class='highlight'>La Petxina, Valencia</span>, intended for visual artists, audiovisual creators, designers, artisans, illustrators, and other people linked to the cultural and artistic field.",
-                p2: "Sala Tres was born as a place for exploration, exchange, production, and project development individually or in connection with an active community.",
-                p3: "We offer divided workspaces, desk and chair, personal locker, WIFI connection, and common areas.",
-                p4: "Opening hours: Monday to Friday from 09:00 to 22:00.<br>📍 Located near Ángel Guimerá metro station.<br>For more information, email us at <span class='highlight'>espaciosalatres@gmail.com</span> or chat with us on WhatsApp: <span class='highlight'>+34 699 111 222</span>.",
-                emailBtn: "Send Email",
-                whatsappBtn: "WhatsApp",
-                galleryTitle: "Photo Gallery"
-            },
-            es: {
-                title: "Sala Tres",
-                subtitle: "espacio de coworking creativo",
-                p1: "Espacio colaborativo de creación en el corazón de <span class='highlight'>La Petxina, Valencia</span>, destinado a artistas plásticos, audiovisuales, diseñadores, artesanos, ilustradores y demás personas vinculadas al ámbito cultural y artístico.",
-                p2: "Sala Tres nace como un lugar de exploración, intercambio, producción y desarrollo de proyectos de manera individual o en conexión con una comunidad activa.",
-                p3: "Contamos con espacios divididos, mesa y silla de trabajo, locker personal, conexión WIFI y espacios en común.",
-                p4: "Nuestro horario de apertura: Lunes a Viernes de 09:00hs a 22:00hs.<br>📍 Estamos ubicados cerca de la estación de metro Ángel Guimerá.<br>Para más información escribinos a <span class='highlight'>espaciosalatres@gmail.com</span> o chateá con nosotros en WhatsApp: <span class='highlight'>+34 699 111 222</span>.",
-                emailBtn: "Enviar Email",
-                whatsappBtn: "WhatsApp",
-                galleryTitle: "Galería de fotos"
-            }
-        };
-
-        function switchLang(lang) {
-            document.getElementById('title').innerHTML = content[lang].title;
-            document.getElementById('subtitle').innerHTML = content[
-
+</body>
 </html>
-
-
