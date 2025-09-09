@@ -29,8 +29,12 @@
         }
 
         h2 {
-            margin: 15px 0 10px 0; /* más espacio del título */
+            margin: 15px 0 10px 0;
             font-size: 10px;
+            color: #2575f1;
+        }
+
+        .heart {
             color: #2575f1;
         }
 
@@ -114,6 +118,7 @@
             max-height: 120px;
             border: 2px solid #2575f1;
             box-shadow: 2px 2px 0 #000000;
+            cursor: pointer;
         }
 
         .horizontal-scroll::-webkit-scrollbar {
@@ -124,29 +129,74 @@
             background: #2575f1;
             border-radius: 4px;
         }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            overflow-x: auto;
+        }
+
+        .lightbox-content {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+            align-items: center;
+        }
+
+        .lightbox-content img {
+            max-height: 80vh;
+            border: 4px solid #2575f1;
+            box-shadow: 4px 4px 0 #000000;
+        }
+
+        .close-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #f565cf;
+            color: #fff;
+            border: none;
+            font-size: 14px;
+            padding: 5px 10px;
+            cursor: pointer;
+            box-shadow: 3px 3px 0 #000000;
+        }
     </style>
 </head>
 <body>
 
     <header>
         <h1>Sala Tres</h1>
-        <h2>espacio de coworking creativo ❤️</h2>
+        <h2>espacio de coworking creativo <span class="heart">❤️</span></h2>
     </header>
 
     <main>
         <div class="pixel-box">
             <p>Hola! bienvenid@s a sala tres. Aquí encontrarán un espacio colaborativo de creación en el corazón de <span class="highlight">La Petxina, Valencia</span>, destinado a artistas plásticos, audiovisuales, diseñador@s, artesan@s, ilustrador@s, talleristas y demás personas vinculadas a ámbitos culturales, artísticos y tecnológicos.</p>
             
-            <p>Sala tres nace ante la necesidad de un punto de encuentro físico de exploración y creación en una zona de la ciudad que está en pleno proceso de transformación cultural. En el mismo barrio encontrarás al <a href="https://www.instagram.com/cc.juby/" target="_blank" class="highlight">Centro Cultural Juby</a>, un espacio que viene a darle una nueva impronta a esta zona de la ciudad ofreciendo distintas propuestas socio culturales.</p>
+            <p>Sala tres nace ante la necesidad de un punto de encuentro físico de exploración y creación en una zona de la ciudad que está en pleno proceso de transformación cultural.</p>
             
-            <p>En sala tres contarán con su propio espacio para proyectos personales asi también como espacios en común que permitirán generar un ámbito de conexiones con otras personas de diferentes ámbitos artísticos y culturales. Contamos con <span class="highlight">WIFI</span>, mesas, veladores, zona de vestuarios, refrigeradora, cafetera y utensillos de cocina.  </p>
+            <p>En el mismo barrio encontrarás al <a href="https://www.instagram.com/cc.juby/" target="_blank" class="highlight">Centro Cultural Juby</a>, un espacio que viene a darle una nueva impronta a esta zona de la ciudad ofreciendo distintas propuestas socio culturales.</p>
+            
+            <p>En sala tres contarán con su propio espacio para proyectos personales asi también como espacios en común que permitirán generar un ámbito de conexiones con otras personas de diferentes ámbitos artísticos y culturales.</p>
+
+            <p>Contamos con <span class="highlight">WIFI</span>, mesas, veladores, zona de vestuarios, refrigeradora, cafetera y utensillos de cocina.</p>
 
             <!-- Galería de fotos scroll horizontal -->
             <div class="gallery-container">
                 <div class="horizontal-scroll">
-                    <img src="images/foto1.jpeg" alt="Foto 1">
-                    <img src="images/foto2.jpeg" alt="Foto 2">
-                    <img src="images/foto3.jpeg" alt="Foto 3">
+                    <img src="images/foto1.jpeg" alt="Foto 1" onclick="openLightbox(0)">
+                    <img src="images/foto2.jpeg" alt="Foto 2" onclick="openLightbox(1)">
+                    <img src="images/foto3.jpeg" alt="Foto 3" onclick="openLightbox(2)">
                 </div>
             </div>
 
@@ -174,6 +224,28 @@
 
         </div>
     </main>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <button class="close-btn" onclick="closeLightbox()">Cerrar</button>
+        <div class="lightbox-content" id="lightboxContent">
+            <img src="images/foto1.jpeg" alt="Foto 1">
+            <img src="images/foto2.jpeg" alt="Foto 2">
+            <img src="images/foto3.jpeg" alt="Foto 3">
+        </div>
+    </div>
+
+    <script>
+        function openLightbox(index) {
+            document.getElementById("lightbox").style.display = "flex";
+            const container = document.getElementById("lightboxContent");
+            container.scrollLeft = index * container.clientWidth;
+        }
+
+        function closeLightbox() {
+            document.getElementById("lightbox").style.display = "none";
+        }
+    </script>
 
 </body>
 </html>
