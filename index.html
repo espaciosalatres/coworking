@@ -1,13 +1,196 @@
+      <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Espacio creativo Sala Tres</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+        :root{
+            --bg: #e5e5e5;
+            --box-bg: #ffffff;
+            --accent: #2575f1;
+            --pink: #f565cf;
+            --pixel-border: #000000;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Press Start 2P', monospace, sans-serif;
+            background-color: var(--bg);
+            color: #000;
+            text-align: center;
+            font-size: 14px; /* más legible */
+        }
+
+        header {
+            background-color: var(--box-bg);
+            padding: 20px;
+            border-bottom: 4px solid var(--pixel-border);
+            position: relative;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 16px;
+            color: var(--pixel-border);
+        }
+
+        h2 {
+            margin: 10px 0 0 0;
+            font-size: 11px;
+            color: var(--accent);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .heart {
+            color: var(--accent);
+            animation: heartbeat 1s infinite;
+            display: inline-block;
+        }
+
+        @keyframes heartbeat {
+            0%,20%,40%,60%,80%,100%{ transform: scale(1); }
+            30%,50%,70%{ transform: scale(1.3); }
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .pixel-box {
+            display: inline-block;
+            padding: 20px;
+            margin: 10px 0;
+            background-color: var(--box-bg);
+            border: 4px solid var(--accent);
+            box-shadow: 0 0 0 4px var(--pixel-border) inset;
+            text-align: left;
+            max-width: 720px;
+            width: calc(100% - 40px);
+        }
+
+        .pixel-box p {
+            font-size: 13px; /* legible */
+            margin: 12px 0;
+            line-height: 1.6;
+            color: #000;
+        }
+
+        .highlight { color: var(--pink); }
+
+        .button-container {
+            text-align: center;
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .pixel-button {
+            display: inline-block;
+            padding: 10px 18px;
+            margin: 6px;
+            color: #000;
+            background-color: #e0f747;
+            border: 2px solid var(--accent);
+            text-decoration: none;
+            font-size: 12px;
+            box-shadow: 4px 4px 0 var(--pixel-border);
+            cursor: pointer;
+            width: auto;
+            white-space: nowrap;
+        }
+
+        .pixel-button:hover { background-color: var(--pink); color: #fff; }
+        .pixel-button.active { background-color: var(--accent); color: #fff; border-color: var(--pink); }
+
+        .lang-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .pixel-box img {
+            display: block;
+            max-width: 90%;
+            height: auto;
+            margin: 14px auto;
+        }
+
+        .footer-text { font-size: 10px; margin-top: 15px; color: #000; text-align:center; }
+        .footer-heart { color: #000; }
+
+        /* pequeños ajustes responsive */
+        @media (max-width:480px){
+            body { font-size: 13px; }
+            .pixel-box { padding: 16px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="lang-buttons" role="tablist" aria-label="Language switch">
+            <button class="pixel-button" data-lang="es" onclick="setLanguage('es')" aria-pressed="true">ES</button>
+            <button class="pixel-button" data-lang="en" onclick="setLanguage('en')" aria-pressed="false">EN</button>
+        </div>
+        <h1>Sala Tres</h1>
+        <h2><span id="subtitle">espacio de coworking creativo</span> <span class="heart">❤️</span></h2>
+    </header>
+
+    <main>
+        <!-- ESPAÑOL -->
+        <div class="pixel-box" id="content-es" style="display:none;">
+            <p>Hola! bienvenid@s a Sala Tres. Aquí encontrarán un espacio colaborativo de creación en el corazón de <span class="highlight">La Petxina, Valencia</span>, destinado a artistas plásticos, audiovisuales, diseñador@s, artesan@s, ilustrador@s, talleristas y demás personas vinculadas a ámbitos culturales, artísticos y tecnológicos.</p>
+            
+            <p>Sala Tres nace ante la necesidad de un punto de encuentro físico de exploración y creación en una zona de la ciudad que está en pleno proceso de transformación cultural.</p>
+            
+            <p>En el mismo barrio encontrarán al <a href="https://www.instagram.com/cc.juby/" target="_blank" rel="noopener noreferrer" class="highlight">Centro Cultural Juby</a>, un espacio que viene a darle una nueva impronta a esta zona de la ciudad ofreciendo distintas propuestas socio culturales.</p>
+            
+            <p>En Sala Tres contarán con espacios individuales de creación así también como espacios en común que permitirán generar un ámbito de conexiones con otras personas de diferentes ámbitos artísticos y culturales.</p>
+
+            <p>Contamos con <span class="highlight">WIFI</span>, mesas, veladores, zona de vestuarios, refrigeradora, cafetera y utensillos de cocina.</p>
+
+            <img src="images/Foto1.jpeg" alt="Foto 1">
+            <img src="images/Foto2.jpeg" alt="Foto 2">
+            <img src="images/Foto3.jpeg" alt="Foto 3">
+            <img src="images/Foto4.jpeg" alt="Foto 4">
+
+            <p>Nuestro horario de apertura: Lunes a Viernes de <span class="highlight">09:00hs a 22:00hs</span>.<br>
+            Estamos ubicados cerca de la estación de metro Ángel Guimerá y la Gran Vía de Fernando el Católico.<br>
+            Para más información escribenos a <span class="highlight">espaciosalatres@gmail.com</span> o encontranos en WhatsApp: <span class="highlight">+34 634 251 216</span>.</p>
+
+            <div class="button-container">
+                <a href="https://wa.me/34634251216" class="pixel-button" target="_blank" rel="noopener noreferrer">Estamos en WhatsApp</a>
+                <a href="https://calendly.com/espaciosalatres/30min" class="pixel-button" target="_blank" rel="noopener noreferrer">Agenda una visita</a>
+                <a href="mailto:espaciosalatres@gmail.com" class="pixel-button">Email</a>
+            </div>
+
+            <div style="text-align:center; margin-top:20px;">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3110.542381414443!2d-0.3852367846532068!3d39.466179579472554!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd604f9e061cf8c1%3A0x29e6310f27682ab0!2sEstaci%C3%B3n%20de%20Metro%20%22%C3%81ngel%20Guimer%C3%A1%22!5e0!3m2!1ses!2ses!4v1694173200000!5m2!1ses!2ses" 
+                    width="100%" height="300" style="border:0; border-radius:4px;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+            <p class="footer-text">Hecho con <span class="footer-heart">❤️</span> en La Petxina</p>
+        </div>
+
+        <!-- ENGLISH -->
         <div class="pixel-box" id="content-en" style="display:none;">
             <p>Hello! Welcome to Sala Tres. Here you will find a collaborative creative space in the heart of <span class="highlight">La Petxina, Valencia</span>, designed for visual artists, audiovisual creators, designers, artisans, illustrators, workshop leaders, and anyone connected to cultural, artistic, and technological fields.</p>
             
-            <p>Sala Tres was born from the need for a physical meeting point for exploration and creation in a neighborhood that is undergoing a process of cultural transformation.</p>
+            <p>Sala Tres was born from the need for a physical meeting point for exploration and creation in a neighborhood that is undergoing a cultural transformation.</p>
             
-            <p>In the same neighborhood, you will find the <a href="https://www.instagram.com/cc.juby/" target="_blank" class="highlight">Juby Cultural Center</a>, a space that brings new energy to the area by offering a variety of socio-cultural activities.</p>
+            <p>In the same neighborhood you will find the <a href="https://www.instagram.com/cc.juby/" target="_blank" rel="noopener noreferrer" class="highlight">Juby Cultural Center</a>, a space that brings fresh energy to the area with a variety of socio-cultural activities.</p>
             
-            <p>At Sala Tres you will have access to individual creative spaces as well as shared areas that encourage connections with people from different artistic and cultural backgrounds.</p>
+            <p>At Sala Tres you will have access to individual creative studios as well as shared areas that encourage connections with people from diverse artistic and cultural backgrounds.</p>
 
-            <p>We provide <span class="highlight">Wi-Fi</span>, tables, lamps, a changing area, refrigerator, coffee maker, and kitchen utensils.</p>
+            <p>We offer <span class="highlight">Wi-Fi</span>, tables, lamps, a changing area, refrigerator, coffee maker, and kitchen utensils.</p>
 
             <img src="images/Foto1.jpeg" alt="Photo 1">
             <img src="images/Foto2.jpeg" alt="Photo 2">
@@ -16,25 +199,42 @@
 
             <p>Opening hours: Monday to Friday from <span class="highlight">09:00 to 22:00</span>.<br>
             We are located near Ángel Guimerá metro station and Gran Vía de Fernando el Católico.<br>
-            For more information, write to us at <span class="highlight">espaciosalatres@gmail.com</span> or find us on WhatsApp: <span class="highlight">+34 634 251 216</span>.</p>
+            For more information, write to us at <span class="highlight">espaciosalatres@gmail.com</span> or reach us on WhatsApp: <span class="highlight">+34 634 251 216</span>.</p>
 
             <div class="button-container">
-                <a href="https://wa.me/34634251216" class="pixel-button" target="_blank">Chat on WhatsApp</a>
-                <a href="https://calendly.com/espaciosalatres/30min" class="pixel-button" target="_blank">Book a visit</a>
+                <a href="https://wa.me/34634251216" class="pixel-button" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
+                <a href="https://calendly.com/espaciosalatres/30min" class="pixel-button" target="_blank" rel="noopener noreferrer">Book a visit</a>
                 <a href="mailto:espaciosalatres@gmail.com" class="pixel-button">Email</a>
             </div>
 
             <div style="text-align:center; margin-top:20px;">
                 <iframe 
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3110.542381414443!2d-0.3852367846532068!3d39.466179579472554!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd604f9e061cf8c1%3A0x29e6310f27682ab0!2sEstaci%C3%B3n%20de%20Metro%20%22%C3%81ngel%20Guimer%C3%A1%22!5e0!3m2!1sen!2ses!4v1694173200000!5m2!1sen!2ses" 
-                    width="100%" 
-                    height="300" 
-                    style="border:0; border-radius:4px;" 
-                    allowfullscreen 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
+                    width="100%" height="300" style="border:0; border-radius:4px;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
 
             <p class="footer-text">Made with <span class="footer-heart">❤️</span> in La Petxina</p>
         </div>
+    </main>
+
+    <script>
+        function setLanguage(lang){
+            const es = document.getElementById('content-es');
+            const en = document.getElementById('content-en');
+            if(!es || !en) return console.warn('missing content blocks');
+            es.style.display = lang === 'es' ? 'block' : 'none';
+            en.style.display = lang === 'en' ? 'block' : 'none';
+            document.getElementById('subtitle').textContent = lang === 'es' ? 'espacio de coworking creativo' : 'creative coworking space';
+            document.documentElement.lang = lang;
+            document.querySelectorAll('.lang-buttons .pixel-button').forEach(btn=>{
+                const is = btn.getAttribute('data-lang') === lang;
+                btn.classList.toggle('active', is);
+                btn.setAttribute('aria-pressed', is ? 'true' : 'false');
+            });
+        }
+
+        // Inicializa idioma español
+        document.addEventListener('DOMContentLoaded', function(){ setLanguage('es'); });
+    </script>
+</body>
+</html>
