@@ -143,6 +143,29 @@
             height: auto;
             margin: 14px auto;
         }
+        /* Galería con scroll horizontal */
+        .scroll-gallery {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            padding: 4px 0 12px 0;
+            margin: 14px 0;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent) rgba(0,0,0,0.12);
+        }
+        .pixel-box .scroll-gallery img {
+            flex: 0 0 85%;
+            width: 85%;
+            margin: 0;
+            scroll-snap-align: center;
+            border-radius: 4px;
+        }
+        /* Barra de scroll visible como pista de que se desliza */
+        .scroll-gallery::-webkit-scrollbar { height: 8px; }
+        .scroll-gallery::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 4px; }
+        .scroll-gallery::-webkit-scrollbar-track { background: rgba(0,0,0,0.12); border-radius: 4px; }
         .footer-text { font-size: 10px; margin-top: 15px; color: #000; text-align:center; }
         .footer-heart { color: #000; }
         @media (max-width:480px){
@@ -157,7 +180,7 @@
             <button class="pixel-button" data-lang="es" onclick="setLanguage('es')" aria-pressed="true">ES</button>
             <button class="pixel-button" data-lang="en" onclick="setLanguage('en')" aria-pressed="false">EN</button>
         </div>
-        <h1>Sala Tres — Coworking para artistas en Valencia</h1>
+        <h1><span id="maintitle">Sala Tres — Coworking para artistas en Valencia</span></h1>
         <h2><span id="subtitle">espacio de coworking creativo</span> <span class="heart">❤️</span></h2>
     </header>
     <main>
@@ -173,11 +196,13 @@
             <p>En Sala Tres contarán con espacios individuales de creación así también como espacios en común que permitirán generar un ámbito de conexiones con otras personas de diferentes disciplinas artísticas.</p>
             <p>Contamos con <span class="highlight">WIFI</span>, mesas de trabajo, veladores, zona de vestuarios, refrigeradora, cafetera y utensilios de cocina.</p>
             <p>Los espacios individuales de creación y las zonas comunes están disponibles <span class="highlight">desde 150€/mes</span>.</p>
-            <img src="./images/luli.jpeg" alt="Chica trabajando con notebook en estudio Sala Tres" loading="lazy" width="720" height="480">
-            <img src="./images/Foto3.jpeg" alt="Espacio de coworking Sala Tres Valencia" loading="lazy" width="720" height="480">
-            <img src="./images/Foto4.jpeg" alt="Detalle instalaciones Sala Tres" loading="lazy" width="720" height="480">
-            <img src="./images/letrero.jpeg" alt="Señalética Sala Tres coworking" loading="lazy" width="720" height="480">
-            <img src="./exposicion.jpeg" alt="Montaje de exposición de cuadros en Sala Tres" loading="lazy" width="720" height="480">
+            <div class="scroll-gallery">
+                <img src="./images/luli.jpeg" alt="Chica trabajando con notebook en estudio Sala Tres" loading="lazy" width="720" height="480">
+                <img src="./images/Foto3.jpeg" alt="Espacio de coworking Sala Tres Valencia" loading="lazy" width="720" height="480">
+                <img src="./images/Foto4.jpeg" alt="Detalle instalaciones Sala Tres" loading="lazy" width="720" height="480">
+                <img src="./images/letrero.jpeg" alt="Señalética Sala Tres coworking" loading="lazy" width="720" height="480">
+                <img src="./exposicion.jpeg" alt="Montaje de exposición de cuadros en Sala Tres" loading="lazy" width="720" height="480">
+            </div>
             <h2>Horarios y ubicación</h2>
             <p>Nuestro horario de apertura: Lunes a Viernes de <span class="highlight">09:00 a 22:00</span>.<br>
             Estamos ubicados en <span class="highlight">La Petxina, Valencia</span>, en Carrer de Calixt III, 5, Extramurs.<br>
@@ -209,11 +234,13 @@
             <p>At Sala Tres you will have access to individual creative studios as well as shared areas that encourage connections with people from diverse artistic and cultural backgrounds.</p>
             <p>We offer <span class="highlight">Wi-Fi</span>, work tables, lamps, a changing area, refrigerator, coffee maker, and kitchen utensils.</p>
             <p>Individual creative studios and shared areas are available <span class="highlight">from €150/month</span>.</p>
-            <img src="./images/luli.jpeg" alt="Person working with a laptop at Sala Tres studio" loading="lazy" width="720" height="480">
-            <img src="./images/Foto3.jpeg" alt="Coworking space Sala Tres Valencia" loading="lazy" width="720" height="480">
-            <img src="./images/Foto4.jpeg" alt="Sala Tres facilities detail" loading="lazy" width="720" height="480">
-            <img src="./images/letrero.jpeg" alt="Sala Tres coworking signage" loading="lazy" width="720" height="480">
-            <img src="./exposicion.jpeg" alt="Artwork exhibition at Sala Tres" loading="lazy" width="720" height="480">
+            <div class="scroll-gallery">
+                <img src="./images/luli.jpeg" alt="Person working with a laptop at Sala Tres studio" loading="lazy" width="720" height="480">
+                <img src="./images/Foto3.jpeg" alt="Coworking space Sala Tres Valencia" loading="lazy" width="720" height="480">
+                <img src="./images/Foto4.jpeg" alt="Sala Tres facilities detail" loading="lazy" width="720" height="480">
+                <img src="./images/letrero.jpeg" alt="Sala Tres coworking signage" loading="lazy" width="720" height="480">
+                <img src="./exposicion.jpeg" alt="Artwork exhibition at Sala Tres" loading="lazy" width="720" height="480">
+            </div>
             <h2>Hours & Location</h2>
             <p>Opening hours: Monday to Friday from <span class="highlight">09:00 to 22:00</span>.<br>
             We are located in <span class="highlight">La Petxina, Valencia</span>, at Carrer de Calixt III, 5, Extramurs.<br>
@@ -307,6 +334,7 @@
             if(!es || !en) return console.warn('missing content blocks');
             es.style.display = lang === 'es' ? 'block' : 'none';
             en.style.display = lang === 'en' ? 'block' : 'none';
+            document.getElementById('maintitle').textContent = lang === 'es' ? 'Sala Tres — Coworking para artistas en Valencia' : 'Sala Tres — Coworking for artists in Valencia';
             document.getElementById('subtitle').textContent = lang === 'es' ? 'espacio de coworking creativo' : 'creative coworking space';
             document.documentElement.lang = lang;
             document.querySelectorAll('.lang-buttons .pixel-button').forEach(btn=>{
