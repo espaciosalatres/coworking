@@ -143,29 +143,66 @@
             height: auto;
             margin: 14px auto;
         }
-        /* Galería con scroll horizontal */
-        .scroll-gallery {
+        /* Carrusel de imágenes (flechas + puntos) */
+        .carousel { position: relative; margin: 16px 0; }
+        .carousel-viewport { position: relative; }
+        .carousel-track {
             display: flex;
-            gap: 12px;
             overflow-x: auto;
             scroll-snap-type: x mandatory;
             -webkit-overflow-scrolling: touch;
-            padding: 4px 0 12px 0;
-            margin: 14px 0;
-            scrollbar-width: thin;
-            scrollbar-color: var(--accent) rgba(0,0,0,0.12);
+            scrollbar-width: none;
+            border-radius: 6px;
         }
-        .pixel-box .scroll-gallery img {
-            flex: 0 0 90%;
-            width: 90%;
+        .carousel-track::-webkit-scrollbar { display: none; }
+        .pixel-box .carousel-track img {
+            flex: 0 0 100%;
+            width: 100%;
+            height: 340px;
+            object-fit: cover;
             margin: 0;
             scroll-snap-align: center;
-            border-radius: 4px;
+            border-radius: 6px;
         }
-        /* Barra de scroll visible como pista de que se desliza */
-        .scroll-gallery::-webkit-scrollbar { height: 8px; }
-        .scroll-gallery::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 4px; }
-        .scroll-gallery::-webkit-scrollbar-track { background: rgba(0,0,0,0.12); border-radius: 4px; }
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 2;
+            width: 36px;
+            height: 36px;
+            padding: 0;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 14px;
+            line-height: 1;
+            color: var(--accent);
+            background: var(--box-bg);
+            border: 2px solid var(--pixel-border);
+            box-shadow: 3px 3px 0 var(--pixel-border);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .carousel-btn.prev { left: 8px; }
+        .carousel-btn.next { right: 8px; }
+        .carousel-btn:hover { background: var(--accent); color: #fff; }
+        .carousel-btn:active { transform: translateY(-50%) translate(2px,2px); box-shadow: 1px 1px 0 var(--pixel-border); }
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 7px;
+            margin-top: 10px;
+        }
+        .carousel-dots button {
+            width: 9px;
+            height: 9px;
+            padding: 0;
+            border: 2px solid var(--accent);
+            background: transparent;
+            cursor: pointer;
+        }
+        .carousel-dots button.active { background: var(--accent); }
         .footer-text { font-size: 9px; margin-top: 15px; color: #000; text-align:center; }
         .footer-heart { color: #000; }
         /* Escala optimizada para móvil (fuente pixel: tamaños chicos + interlineado amplio) */
@@ -190,7 +227,8 @@
             }
             .lang-buttons .pixel-button { width: auto; }
             .footer-text { font-size: 8px; }
-            .pixel-box .scroll-gallery img { flex: 0 0 93%; width: 93%; }
+            .pixel-box .carousel-track img { height: 240px; }
+            .carousel-btn { width: 32px; height: 32px; font-size: 12px; }
         }
     </style>
 </head>
@@ -200,8 +238,8 @@
             <button class="pixel-button" data-lang="es" onclick="setLanguage('es')" aria-pressed="true">ES</button>
             <button class="pixel-button" data-lang="en" onclick="setLanguage('en')" aria-pressed="false">EN</button>
         </div>
-        <h1><span id="maintitle">Espacio Creativo Sala Tres</span></h1>
-        <h2><span id="subtitle"> Coworking para artistas en Valencia</span> <span class="heart">❤️</span></h2>
+        <h1><span id="maintitle">Sala Tres — Coworking para artistas en Valencia</span></h1>
+        <h2><span id="subtitle">espacio de coworking creativo</span> <span class="heart">❤️</span></h2>
     </header>
     <main>
         <!-- ESPAÑOL -->
@@ -216,12 +254,19 @@
             <p>En Sala Tres contarán con espacios individuales de creación así también como espacios en común que permitirán generar un ámbito de conexiones con otras personas de diferentes disciplinas artísticas.</p>
             <p>Contamos con <span class="highlight">WIFI</span>, mesas de trabajo, veladores, zona de vestuarios, refrigeradora, cafetera y utensilios de cocina.</p>
             <p>Los espacios individuales de creación y las zonas comunes están disponibles <span class="highlight">desde 150€/mes</span>.</p>
-            <div class="scroll-gallery">
-                <img src="./images/luli.jpeg" alt="Chica trabajando con notebook en estudio Sala Tres" loading="lazy" width="720" height="480">
-                <img src="./images/Foto3.jpeg" alt="Espacio de coworking Sala Tres Valencia" loading="lazy" width="720" height="480">
-                <img src="./images/Foto4.jpeg" alt="Detalle instalaciones Sala Tres" loading="lazy" width="720" height="480">
-                <img src="./images/letrero.jpeg" alt="Señalética Sala Tres coworking" loading="lazy" width="720" height="480">
-                <img src="./exposicion.jpeg" alt="Montaje de exposición de cuadros en Sala Tres" loading="lazy" width="720" height="480">
+            <div class="carousel">
+                <div class="carousel-viewport">
+                    <button class="carousel-btn prev" type="button" aria-label="Imagen anterior">‹</button>
+                    <div class="carousel-track">
+                        <img src="./images/luli.jpeg" alt="Chica trabajando con notebook en estudio Sala Tres" loading="lazy" width="720" height="480">
+                        <img src="./images/Foto3.jpeg" alt="Espacio de coworking Sala Tres Valencia" loading="lazy" width="720" height="480">
+                        <img src="./images/Foto4.jpeg" alt="Detalle instalaciones Sala Tres" loading="lazy" width="720" height="480">
+                        <img src="./images/letrero.jpeg" alt="Señalética Sala Tres coworking" loading="lazy" width="720" height="480">
+                        <img src="./exposicion.jpeg" alt="Montaje de exposición de cuadros en Sala Tres" loading="lazy" width="720" height="480">
+                    </div>
+                    <button class="carousel-btn next" type="button" aria-label="Imagen siguiente">›</button>
+                </div>
+                <div class="carousel-dots"></div>
             </div>
             <h2>Horarios y ubicación</h2>
             <p>Nuestro horario de apertura: Lunes a Viernes de <span class="highlight">09:00 a 22:00</span>.<br>
@@ -254,12 +299,19 @@
             <p>At Sala Tres you will have access to individual creative studios as well as shared areas that encourage connections with people from diverse artistic and cultural backgrounds.</p>
             <p>We offer <span class="highlight">Wi-Fi</span>, work tables, lamps, a changing area, refrigerator, coffee maker, and kitchen utensils.</p>
             <p>Individual creative studios and shared areas are available <span class="highlight">from €150/month</span>.</p>
-            <div class="scroll-gallery">
-                <img src="./images/luli.jpeg" alt="Person working with a laptop at Sala Tres studio" loading="lazy" width="720" height="480">
-                <img src="./images/Foto3.jpeg" alt="Coworking space Sala Tres Valencia" loading="lazy" width="720" height="480">
-                <img src="./images/Foto4.jpeg" alt="Sala Tres facilities detail" loading="lazy" width="720" height="480">
-                <img src="./images/letrero.jpeg" alt="Sala Tres coworking signage" loading="lazy" width="720" height="480">
-                <img src="./exposicion.jpeg" alt="Artwork exhibition at Sala Tres" loading="lazy" width="720" height="480">
+            <div class="carousel">
+                <div class="carousel-viewport">
+                    <button class="carousel-btn prev" type="button" aria-label="Previous image">‹</button>
+                    <div class="carousel-track">
+                        <img src="./images/luli.jpeg" alt="Person working with a laptop at Sala Tres studio" loading="lazy" width="720" height="480">
+                        <img src="./images/Foto3.jpeg" alt="Coworking space Sala Tres Valencia" loading="lazy" width="720" height="480">
+                        <img src="./images/Foto4.jpeg" alt="Sala Tres facilities detail" loading="lazy" width="720" height="480">
+                        <img src="./images/letrero.jpeg" alt="Sala Tres coworking signage" loading="lazy" width="720" height="480">
+                        <img src="./exposicion.jpeg" alt="Artwork exhibition at Sala Tres" loading="lazy" width="720" height="480">
+                    </div>
+                    <button class="carousel-btn next" type="button" aria-label="Next image">›</button>
+                </div>
+                <div class="carousel-dots"></div>
             </div>
             <h2>Hours & Location</h2>
             <p>Opening hours: Monday to Friday from <span class="highlight">09:00 to 22:00</span>.<br>
@@ -354,17 +406,45 @@
             if(!es || !en) return console.warn('missing content blocks');
             es.style.display = lang === 'es' ? 'block' : 'none';
             en.style.display = lang === 'en' ? 'block' : 'none';
-            document.getElementById('maintitle').textContent = lang === 'es' ? 'Espacio Creativo Sala Tres' : 'Creative Space Sala Tres';
-            document.getElementById('subtitle').textContent = lang === 'es' ? 'Coworking para artistas en Valencia' : 'Artists coworking in Valencia';
+            document.getElementById('maintitle').textContent = lang === 'es' ? 'Sala Tres — Coworking para artistas en Valencia' : 'Sala Tres — Coworking for artists in Valencia';
+            document.getElementById('subtitle').textContent = lang === 'es' ? 'espacio de coworking creativo' : 'creative coworking space';
             document.documentElement.lang = lang;
             document.querySelectorAll('.lang-buttons .pixel-button').forEach(btn=>{
                 const is = btn.getAttribute('data-lang') === lang;
                 btn.classList.toggle('active', is);
                 btn.setAttribute('aria-pressed', is ? 'true' : 'false');
             });
+            // refresca los puntos del carrusel al mostrar el idioma
+            window.dispatchEvent(new Event('resize'));
         }
-        // Inicializa idioma español
-        document.addEventListener('DOMContentLoaded', function(){ setLanguage('es'); });
+        // Carrusel de imágenes (flechas + puntos)
+        function initCarousels(){
+            document.querySelectorAll('.carousel').forEach(function(car){
+                const track = car.querySelector('.carousel-track');
+                const dotsWrap = car.querySelector('.carousel-dots');
+                const slides = track.children;
+                const n = slides.length;
+                dotsWrap.innerHTML = '';
+                function idx(){ return track.clientWidth ? Math.round(track.scrollLeft / track.clientWidth) : 0; }
+                function go(i){ i = Math.max(0, Math.min(n - 1, i)); track.scrollTo({ left: i * track.clientWidth, behavior: 'smooth' }); }
+                function update(){ const c = idx(); for (let i = 0; i < n; i++) dots[i].classList.toggle('active', i === c); }
+                for (let i = 0; i < n; i++){
+                    const b = document.createElement('button');
+                    b.type = 'button';
+                    b.setAttribute('aria-label', 'Ir a imagen ' + (i + 1));
+                    b.addEventListener('click', (function(i){ return function(){ go(i); }; })(i));
+                    dotsWrap.appendChild(b);
+                }
+                const dots = dotsWrap.children;
+                car.querySelector('.carousel-btn.prev').addEventListener('click', function(){ go(idx() - 1); });
+                car.querySelector('.carousel-btn.next').addEventListener('click', function(){ go(idx() + 1); });
+                track.addEventListener('scroll', function(){ requestAnimationFrame(update); });
+                window.addEventListener('resize', update);
+                update();
+            });
+        }
+        // Inicializa idioma español + carrusel
+        document.addEventListener('DOMContentLoaded', function(){ setLanguage('es'); initCarousels(); });
     </script>
 </body>
 </html>
