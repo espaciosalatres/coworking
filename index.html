@@ -234,6 +234,17 @@
     </main>
 
     <script>
+        const seoData = {
+            es: {
+                title: 'Sala Tres | Coworking para artistas en Valencia – La Petxina',
+                description: 'Espacio de coworking creativo para artistas, diseñadores e ilustradores en La Petxina, Valencia. Estudios individuales y zonas comunes desde 150 €/mes.'
+            },
+            en: {
+                title: 'Sala Tres | Creative Coworking for Artists in Valencia – La Petxina',
+                description: 'Creative coworking space for artists, designers, and illustrators in La Petxina, Valencia. Individual studios and shared areas from €150/month.'
+            }
+        };
+
         function setLanguage(lang){
             const es = document.getElementById('content-es');
             const en = document.getElementById('content-en');
@@ -247,6 +258,10 @@
                 btn.classList.toggle('active', is);
                 btn.setAttribute('aria-pressed', is ? 'true' : 'false');
             });
+
+            // Actualizar título y meta descripción
+            document.title = seoData[lang].title;
+            document.querySelector('meta[name="description"]').setAttribute('content', seoData[lang].description);
         }
 
         // Inicializa idioma español
