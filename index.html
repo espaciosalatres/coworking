@@ -200,8 +200,8 @@
             <button class="pixel-button" data-lang="es" onclick="setLanguage('es')" aria-pressed="true">ES</button>
             <button class="pixel-button" data-lang="en" onclick="setLanguage('en')" aria-pressed="false">EN</button>
         </div>
-        <h1><span id="maintitle">Sala Tres Coworking para artistas en Valencia</span></h1>
-        <h2><span id="subtitle">espacio de coworking creativo</span> <span class="heart">❤️</span></h2>
+        <h1><span id="maintitle">Espacio Creativo Sala Tres</span></h1>
+        <h2><span id="subtitle"> Coworking para artistas en Valencia</span> <span class="heart">❤️</span></h2>
     </header>
     <main>
         <!-- ESPAÑOL -->
@@ -354,8 +354,8 @@
             if(!es || !en) return console.warn('missing content blocks');
             es.style.display = lang === 'es' ? 'block' : 'none';
             en.style.display = lang === 'en' ? 'block' : 'none';
-            document.getElementById('maintitle').textContent = lang === 'es' ? 'Sala Tres Coworking para artistas en Valencia' : 'Sala Tres Coworking for artists in Valencia';
-            document.getElementById('subtitle').textContent = lang === 'es' ? 'espacio de coworking creativo' : 'creative coworking space';
+            document.getElementById('maintitle').textContent = lang === 'es' ? 'Espacio Creativo Sala Tres' : 'Creative Space Sala Tres';
+            document.getElementById('subtitle').textContent = lang === 'es' ? 'Coworking para artistas en Valencia' : 'Artists coworking in Valencia';
             document.documentElement.lang = lang;
             document.querySelectorAll('.lang-buttons .pixel-button').forEach(btn=>{
                 const is = btn.getAttribute('data-lang') === lang;
